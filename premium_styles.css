@@ -1,0 +1,903 @@
+/* ===================================
+   🌟 ULTRA PREMIUM DESIGN SYSTEM 🌟
+   De Horizon Holidays - Premium Theme
+   ================================== */
+
+/* Import Premium Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
+/* ===== CSS Variables - Premium Color Palette ===== */
+:root {
+    /* Deep Ocean Premium Colors */
+    --bg-primary: #0a0f1a;
+    --bg-secondary: #0d1525;
+    --bg-card: rgba(13, 21, 37, 0.7);
+
+    /* Vibrant Accent Gradients */
+    --gradient-gold: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%);
+    --gradient-aurora: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    --gradient-ocean: linear-gradient(135deg, #00c6fb 0%, #005bea 100%);
+    --gradient-sunset: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    --gradient-emerald: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    --gradient-premium: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+    /* Glow Colors */
+    --glow-primary: rgba(102, 126, 234, 0.5);
+    --glow-secondary: rgba(118, 75, 162, 0.5);
+    --glow-gold: rgba(249, 212, 35, 0.4);
+
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.8);
+    --text-muted: rgba(255, 255, 255, 0.6);
+
+    /* Premium Font Families */
+    --font-display: 'Playfair Display', serif;
+    --font-body: 'Poppins', sans-serif;
+    --font-modern: 'Outfit', sans-serif;
+}
+
+/* ===== Animated Particle Background ===== */
+.premium-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: var(--bg-primary);
+    overflow: hidden;
+}
+
+.premium-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at 20% 20%, rgba(102, 126, 234, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(118, 75, 162, 0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(240, 147, 251, 0.08) 0%, transparent 60%);
+    animation: auroraMove 15s ease-in-out infinite;
+}
+
+@keyframes auroraMove {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-20px) scale(1.05);
+    }
+}
+
+/* Floating Particles */
+.particle {
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    animation: floatParticle linear infinite;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateY(-100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* ===== Premium Body Styling ===== */
+body {
+    background: var(--bg-primary) !important;
+    font-family: var(--font-body) !important;
+    color: var(--text-primary);
+    min-height: 100vh;
+}
+
+/* ===== Premium Header ===== */
+header {
+    background: linear-gradient(180deg, rgba(10, 15, 26, 0.98) 0%, rgba(10, 15, 26, 0.9) 100%) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 1000;
+}
+
+#top_line {
+    background: linear-gradient(90deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+#top_links li a {
+    color: var(--text-secondary) !important;
+    transition: all 0.3s ease;
+}
+
+#top_links li a:hover {
+    color: #667eea !important;
+    text-shadow: 0 0 15px var(--glow-primary);
+}
+
+/* Logo Premium Styling */
+#logo_home h1 a {
+    background: var(--gradient-aurora) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-family: var(--font-display) !important;
+    font-weight: 700 !important;
+    text-shadow: none !important;
+}
+
+/* Navigation Premium Styling */
+.main-menu ul li a {
+    font-family: var(--font-modern) !important;
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.5px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+}
+
+.main-menu ul li a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-aurora);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateX(-50%);
+}
+
+.main-menu ul li a:hover::after {
+    width: 100%;
+}
+
+.main-menu ul li a:hover {
+    color: #667eea !important;
+}
+
+/* ===== Premium Section Titles ===== */
+.main_title h2 {
+    font-family: var(--font-display) !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    position: relative;
+    display: inline-block;
+}
+
+.main_title h2 span {
+    background: var(--gradient-aurora) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-weight: 700 !important;
+}
+
+.main_title h2::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-aurora);
+    border-radius: 2px;
+    box-shadow: 0 0 20px var(--glow-primary);
+}
+
+/* ===== Premium Glassmorphism Cards ===== */
+.tour_container,
+.hotel_container {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 24px !important;
+    overflow: hidden !important;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    position: relative !important;
+    cursor: pointer !important;
+}
+
+.tour_container::before,
+.hotel_container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(10, 15, 26, 0.9) 100%);
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.tour_container:hover,
+.hotel_container:hover {
+    transform: translateY(-15px) scale(1.02) !important;
+    border-color: rgba(102, 126, 234, 0.5) !important;
+    box-shadow:
+        0 25px 60px rgba(0, 0, 0, 0.4),
+        0 0 40px var(--glow-primary),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
+}
+
+.tour_container:hover::before,
+.hotel_container:hover::before {
+    opacity: 1;
+}
+
+/* Card Image Styling */
+.tour_container .img_container,
+.hotel_container .img_container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 24px 24px 0 0 !important;
+}
+
+.tour_container .img_container img,
+.hotel_container .img_container img {
+    transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: scale(1);
+}
+
+.tour_container:hover .img_container img,
+.hotel_container:hover .img_container img {
+    transform: scale(1.15);
+}
+
+.tour_container .img_container::after,
+.hotel_container .img_container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, transparent 0%, rgba(10, 15, 26, 0.8) 100%);
+}
+
+/* Card Title Styling */
+.tour_title,
+.hotel_title {
+    padding: 20px !important;
+    background: transparent !important;
+    position: relative;
+    z-index: 2;
+}
+
+.tour_title h3,
+.hotel_title h3 {
+    font-family: var(--font-display) !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    font-size: 1.2rem !important;
+    margin-bottom: 8px !important;
+}
+
+.tour_title h6,
+.hotel_title h4 {
+    color: var(--text-muted) !important;
+    font-family: var(--font-modern) !important;
+    font-weight: 400 !important;
+    font-size: 0.85rem !important;
+}
+
+/* Price Styling */
+.tour_title .price,
+.hotel_title .m-price strong {
+    background: var(--gradient-gold) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+    font-family: var(--font-modern) !important;
+    font-weight: 700 !important;
+    font-size: 1.4rem !important;
+}
+
+/* Premium Ribbons */
+.ribbon_3,
+.ribbon_premium {
+    background: var(--gradient-aurora) !important;
+    font-family: var(--font-modern) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    box-shadow: 0 5px 20px var(--glow-primary) !important;
+    animation: ribbonPulse 2s ease-in-out infinite;
+}
+
+.ribbon_premium {
+    background: var(--gradient-gold) !important;
+    box-shadow: 0 5px 20px var(--glow-gold) !important;
+}
+
+@keyframes ribbonPulse {
+
+    0%,
+    100% {
+        box-shadow: 0 5px 20px var(--glow-primary);
+    }
+
+    50% {
+        box-shadow: 0 5px 35px var(--glow-primary), 0 0 50px var(--glow-secondary);
+    }
+}
+
+/* ===== Search Box Premium Styling ===== */
+#search_container_2,
+#search_2 {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(30px) !important;
+    -webkit-backdrop-filter: blur(30px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 30px !important;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3) !important;
+}
+
+#search_2 .nav-tabs li a {
+    background: transparent !important;
+    color: var(--text-secondary) !important;
+    font-family: var(--font-modern) !important;
+    font-weight: 500 !important;
+    border-radius: 20px !important;
+    transition: all 0.4s ease !important;
+}
+
+#search_2 .nav-tabs li a.active,
+#search_2 .nav-tabs li a:hover {
+    background: var(--gradient-aurora) !important;
+    color: white !important;
+    box-shadow: 0 10px 30px var(--glow-primary) !important;
+}
+
+.custom-search-input-2 .form-control {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font-modern) !important;
+    border-radius: 15px !important;
+    transition: all 0.4s ease !important;
+}
+
+.custom-search-input-2 .form-control:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 20px var(--glow-primary) !important;
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+.custom-search-input-2 .form-control::placeholder {
+    color: var(--text-muted) !important;
+}
+
+.btn_search {
+    background: var(--gradient-aurora) !important;
+    border: none !important;
+    font-family: var(--font-modern) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    border-radius: 15px !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    box-shadow: 0 10px 30px var(--glow-primary) !important;
+}
+
+.btn_search:hover {
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 15px 40px var(--glow-primary), 0 0 60px var(--glow-secondary) !important;
+}
+
+/* ===== Premium Buttons ===== */
+.btn_1 {
+    background: var(--gradient-aurora) !important;
+    border: none !important;
+    font-family: var(--font-modern) !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1.5px !important;
+    padding: 15px 40px !important;
+    border-radius: 50px !important;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    box-shadow: 0 10px 30px var(--glow-primary) !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+.btn_1::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn_1:hover::before {
+    left: 100%;
+}
+
+.btn_1:hover {
+    transform: translateY(-5px) scale(1.05) !important;
+    box-shadow: 0 20px 50px var(--glow-primary), 0 0 80px var(--glow-secondary) !important;
+}
+
+/* ===== Category Icons Premium Styling ===== */
+.header-search .tour_container {
+    background: rgba(255, 255, 255, 0.03) !important;
+    backdrop-filter: blur(20px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
+    padding: 25px !important;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.header-search .tour_container:hover {
+    transform: translateY(-10px) scale(1.05) !important;
+    border-color: rgba(102, 126, 234, 0.5) !important;
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.3),
+        0 0 40px var(--glow-primary) !important;
+}
+
+.header-search .tour_title h3 {
+    font-family: var(--font-modern) !important;
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+}
+
+/* ===== Footer Premium Styling ===== */
+footer {
+    background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%) !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--gradient-aurora);
+    box-shadow: 0 0 30px var(--glow-primary);
+}
+
+footer h3,
+footer h4 {
+    font-family: var(--font-display) !important;
+    color: var(--text-primary) !important;
+}
+
+footer p,
+footer li,
+footer a {
+    color: var(--text-muted) !important;
+    font-family: var(--font-modern) !important;
+    transition: all 0.3s ease !important;
+}
+
+footer a:hover {
+    color: #667eea !important;
+    text-shadow: 0 0 15px var(--glow-primary) !important;
+}
+
+/* ===== Carousel Arrows Premium ===== */
+.owl-nav button {
+    background: rgba(255, 255, 255, 0.1) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border-radius: 50% !important;
+    width: 50px !important;
+    height: 50px !important;
+    transition: all 0.4s ease !important;
+}
+
+.owl-nav button:hover {
+    background: var(--gradient-aurora) !important;
+    border-color: transparent !important;
+    box-shadow: 0 10px 30px var(--glow-primary) !important;
+    transform: scale(1.1) !important;
+}
+
+.owl-dots .owl-dot span {
+    background: rgba(255, 255, 255, 0.3) !important;
+    transition: all 0.4s ease !important;
+}
+
+.owl-dots .owl-dot.active span,
+.owl-dots .owl-dot:hover span {
+    background: var(--gradient-aurora) !important;
+    box-shadow: 0 0 15px var(--glow-primary) !important;
+    transform: scale(1.3) !important;
+}
+
+/* ===== Scroll Animations ===== */
+.wow {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+/* ===== Main Content Area ===== */
+main {
+    background: transparent !important;
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* ===== HR Lines ===== */
+hr {
+    border: none !important;
+    height: 1px !important;
+    background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.5), transparent) !important;
+    margin: 50px 0 !important;
+}
+
+/* ===== Slider Overlay Enhancement ===== */
+.rev_slider_wrapper {
+    position: relative !important;
+}
+
+.rev_slider_wrapper::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 150px;
+    background: linear-gradient(180deg, transparent, var(--bg-primary));
+    pointer-events: none;
+    z-index: 10;
+}
+
+/* ===== Preloader Premium ===== */
+#preloader {
+    background: var(--bg-primary) !important;
+}
+
+.sk-spinner-wave .sk-rect1,
+.sk-spinner-wave .sk-rect2,
+.sk-spinner-wave .sk-rect3,
+.sk-spinner-wave .sk-rect4,
+.sk-spinner-wave .sk-rect5 {
+    background: linear-gradient(180deg, #667eea, #764ba2) !important;
+}
+
+/* ===== Short Info Badge ===== */
+.short_info {
+    background: rgba(0, 0, 0, 0.6) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 20px !important;
+    font-family: var(--font-modern) !important;
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
+}
+
+/* ===== Scroll to Top Button ===== */
+#toTop {
+    background: var(--gradient-aurora) !important;
+    border-radius: 50% !important;
+    box-shadow: 0 10px 30px var(--glow-primary) !important;
+    transition: all 0.4s ease !important;
+}
+
+#toTop:hover {
+    transform: translateY(-5px) scale(1.1) !important;
+    box-shadow: 0 15px 40px var(--glow-primary), 0 0 60px var(--glow-secondary) !important;
+}
+
+/* ===== Mobile Responsive ===== */
+@media (max-width: 768px) {
+
+    .tour_container:hover,
+    .hotel_container:hover {
+        transform: translateY(-5px) !important;
+    }
+
+    .btn_1 {
+        padding: 12px 30px !important;
+    }
+
+    .main_title h2 {
+        font-size: 1.8rem !important;
+    }
+}
+
+/* ===== Premium Animations ===== */
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+@keyframes glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px var(--glow-primary);
+    }
+
+    50% {
+        box-shadow: 0 0 40px var(--glow-primary), 0 0 60px var(--glow-secondary);
+    }
+}
+
+/* Apply glow animation to active elements */
+.tour_container:hover,
+.btn_1:hover {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* ===== Links Override ===== */
+a {
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    color: #667eea;
+    text-decoration: none;
+}
+
+/* ===== Hotels Logo Slider ===== */
+.rlr-logos-slider {
+    background: rgba(255, 255, 255, 0.02) !important;
+    border-radius: 20px !important;
+    padding: 30px !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}
+
+.rlr-logos-slider img {
+    filter: brightness(0) invert(1) !important;
+    opacity: 0.6 !important;
+    transition: all 0.4s ease !important;
+}
+
+.rlr-logos-slider img:hover {
+    opacity: 1 !important;
+    transform: scale(1.1) !important;
+}
+
+/* ===== Days/Duration Badge ===== */
+.rlr-product-card__footer,
+.rlr-icon-days {
+    color: var(--text-muted) !important;
+    font-family: var(--font-modern) !important;
+}
+
+.rlr-product-card__footer i,
+.rlr-icon-days i {
+    color: #667eea !important;
+}
+
+/* ===== Custom Scrollbar ===== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--gradient-aurora);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--gradient-sunset);
+}
+
+/* ===== Selection Color ===== */
+::selection {
+    background: rgba(102, 126, 234, 0.4);
+    color: white;
+}
+
+/* ===== Form Dropdown Styling ===== */
+select.form-control {
+    background: rgba(255, 255, 255, 0.05) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* ===== 📱 IMPROVED MOBILE EXPERIENCE (JHAKAS VIEW) 📱 ===== */
+
+@media (max-width: 991px) {
+    .main-menu {
+        background: rgba(10, 15, 26, 0.98) !important;
+        backdrop-filter: blur(20px);
+        border-left: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .main-menu ul li a {
+        color: var(--text-primary) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding: 15px 20px !important;
+    }
+}
+
+@media (max-width: 767px) {
+
+    /* Header Adjustments */
+    #top_line {
+        display: none !important;
+        /* Hide top bar on mobile for cleaner look */
+    }
+
+    header {
+        padding: 10px 0 !important;
+    }
+
+    #logo_home h1 a {
+        font-size: 1.5rem !important;
+    }
+
+    /* Hero Section */
+    .tp-caption.NotGeneric-Title {
+        font-size: 32px !important;
+        line-height: 40px !important;
+    }
+
+    .tp-caption.NotGeneric-SubTitle {
+        font-size: 14px !important;
+        letter-spacing: 2px !important;
+    }
+
+    /* Search Box Mobile */
+    #search_container_2 {
+        margin-top: -50px !important;
+        padding: 15px !important;
+        background: rgba(10, 15, 26, 0.95) !important;
+    }
+
+    .nav-tabs {
+        display: flex;
+        justify-content: center;
+        border: none !important;
+    }
+
+    .nav-tabs li {
+        flex: 1;
+        text-align: center;
+    }
+
+    .custom-search-input-2 .form-group {
+        margin-bottom: 15px !important;
+    }
+
+    .btn_search {
+        width: 100% !important;
+        padding: 12px !important;
+        margin-top: 10px;
+    }
+
+    /* Cards Stack & Mobile View */
+    .header-search .row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .header-search .col-3 {
+        width: 48% !important;
+        /* 2 items per row */
+        flex: 0 0 48%;
+        max-width: 48%;
+        margin-bottom: 15px;
+    }
+
+    .tour_container,
+    .hotel_container {
+        margin-bottom: 25px !important;
+        transform: translateY(0) !important;
+        /* Reset transform for stability */
+    }
+
+    /* Improve Card Touch Targets */
+    .tour_container:active,
+    .hotel_container:active {
+        transform: scale(0.98) !important;
+    }
+
+    /* Titles */
+    .main_title h2 {
+        font-size: 24px !important;
+    }
+
+    .main_title p {
+        font-size: 14px !important;
+    }
+
+    /* Buttons */
+    .btn_1 {
+        width: 100%;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    /* Footer Mobile */
+    footer {
+        text-align: center;
+    }
+
+    footer ul li {
+        display: inline-block;
+        margin: 0 10px;
+    }
+
+    /* Mobile Text Sizes */
+    body {
+        font-size: 14px !important;
+    }
+
+    h3 {
+        font-size: 18px !important;
+    }
+}
+
+/* Landscape Mobile */
+@media (max-width: 576px) {
+    .header-search .col-3 {
+        width: 100% !important;
+        /* 1 item per row on very small screens */
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
+
+/* Ensure Icons are visible and properly sized */
+i[class^="fa-"],
+i[class*=" fa-"] {
+    display: inline-block;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Fix missing logo fallback text styling */
+.logo-text-fallback {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 700;
+    background: var(--gradient-aurora);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
