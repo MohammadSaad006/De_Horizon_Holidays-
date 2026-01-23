@@ -8,30 +8,28 @@
 
 /* ===== CSS Variables - Premium Color Palette ===== */
 :root {
-    /* Deep Ocean Premium Colors */
-    --bg-primary: #0a0f1a;
-    --bg-secondary: #0d1525;
-    --bg-card: rgba(13, 21, 37, 0.7);
+    /* Deep Luxury Colors */
+    --bg-primary: #050505;
+    /* Blackest Black */
+    --bg-secondary: #0a0a0;
+    --bg-card: rgba(255, 255, 255, 0.02);
 
-    /* Vibrant Accent Gradients */
-    --gradient-gold: linear-gradient(135deg, #f9d423 0%, #ff4e50 100%);
+    /* Luxury Accents */
+    --gradient-gold: linear-gradient(135deg, #bf953f 0%, #fcf6ba 50%, #b38728 100%, #fbf5b7 150%);
+    --gradient-obsidian: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0) 100%);
     --gradient-aurora: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-    --gradient-ocean: linear-gradient(135deg, #00c6fb 0%, #005bea 100%);
-    --gradient-sunset: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-    --gradient-emerald: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-    --gradient-premium: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* Kept for legacy */
+    --accent-gold: #D4AF37;
 
-    /* Glow Colors */
-    --glow-primary: rgba(102, 126, 234, 0.5);
-    --glow-secondary: rgba(118, 75, 162, 0.5);
-    --glow-gold: rgba(249, 212, 35, 0.4);
+    /* Glows */
+    --glow-gold: rgba(212, 175, 55, 0.3);
 
-    /* Text Colors */
-    --text-primary: #ffffff;
-    --text-secondary: rgba(255, 255, 255, 0.8);
-    --text-muted: rgba(255, 255, 255, 0.6);
+    /* Text */
+    --text-primary: #FFFFFF;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+    --text-muted: rgba(255, 255, 255, 0.5);
 
-    /* Premium Font Families */
+    /* Fonts */
     --font-display: 'Playfair Display', serif;
     --font-body: 'Poppins', sans-serif;
     --font-modern: 'Outfit', sans-serif;
@@ -898,6 +896,403 @@ i[class*=" fa-"] {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+
     text-transform: uppercase;
     letter-spacing: 1px;
+}
+
+/* =========================================
+   💎 $10M LUXURY OVERHAUL - CINEMATIC MODE
+   ========================================= */
+
+/* --- Editorial Typography --- */
+.main_title h2 {
+    font-size: 4rem !important;
+    /* Massive Headline */
+    font-weight: 400 !important;
+    letter-spacing: -1px !important;
+    margin-bottom: 1rem !important;
+}
+
+.main_title h2 span {
+    font-style: italic !important;
+    font-family: var(--font-display) !important;
+    background: var(--gradient-gold) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    padding-right: 10px;
+}
+
+.main_title p {
+    font-size: 1.1rem !important;
+    max-width: 600px;
+    margin: 0 auto 3rem auto !important;
+    color: var(--text-secondary) !important;
+    font-weight: 300 !important;
+}
+
+/* --- Cinematic Cards (Immersive) --- */
+.tour_container,
+.hotel_container {
+    height: 500px !important;
+    /* Fixed tall height */
+    padding: 0 !important;
+    border: none !important;
+    background: #000 !important;
+    border-radius: 0 !important;
+    /* Sharp edges for editorial look, or slight rounded */
+    border-radius: 4px !important;
+    isolation: isolate;
+}
+
+/* Image takes full space */
+.tour_container .img_container,
+.hotel_container .img_container {
+    height: 100% !important;
+    border-radius: 0 !important;
+}
+
+.tour_container img,
+.hotel_container img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+    transform: scale(1.05);
+    /* Slight zoom initially */
+}
+
+.tour_container:hover img,
+.hotel_container:hover img {
+    transform: scale(1.15) !important;
+    /* Cinematic slow zoom */
+}
+
+/* Gradient Overlay for Text Readability */
+.tour_container::after,
+.hotel_container::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 70%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.6) 50%, transparent 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Content Positioning - Floating at bottom */
+.tour_title,
+.hotel_title {
+    position: absolute !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    z-index: 2 !important;
+    padding: 30px !important;
+    background: transparent !important;
+    transform: translateY(20px);
+    transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.tour_container:hover .tour_title,
+.hotel_container:hover .hotel_title {
+    transform: translateY(0);
+}
+
+/* Price & Meta Styling - Gold Luxury */
+.tour_title .price {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.8rem !important;
+    color: var(--accent-gold) !important;
+    background: none !important;
+    -webkit-text-fill-color: var(--accent-gold) !important;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}
+
+/* Badges - Minimalist Luxury */
+.ribbon_3,
+.ribbon_premium {
+    top: 20px !important;
+    left: 20px !important;
+    border-radius: 2px !important;
+    padding: 8px 15px !important;
+    font-size: 0.7rem !important;
+    letter-spacing: 2px !important;
+    background: #000 !important;
+    /* Minimal black badge */
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: none !important;
+}
+
+.ribbon_premium {
+    background: var(--accent-gold) !important;
+    color: #000 !important;
+    border: none !important;
+    font-weight: 700;
+}
+
+/* --- Floating Island Search --- */
+#search_container_2 {
+    background: rgba(10, 10, 10, 0.8) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8) !important;
+    margin-top: -80px !important;
+    /* Pull up more into hero */
+    max-width: 1100px !important;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px 40px !important;
+}
+
+/* --- Magnetic Gold Cursor (Optional Visual) --- */
+/* (We can't add custom cursor JS easily without a script, but we can style the selection) */
+
+/* --- Mobile Adaptations for Luxury Mode --- */
+@media (max-width: 768px) {
+    .main_title h2 {
+        font-size: 2.5rem !important;
+    }
+
+    .tour_container,
+    .hotel_container {
+        height: 400px !important;
+        margin-bottom: 30px !important;
+    }
+
+    #search_container_2 {
+        margin-top: -40px !important;
+        padding: 20px !important;
+    }
+}
+
+/* =========================================
+   💠 USER-REQUESTED CINEMATIC CARD DESIGN
+   ========================================= */
+@import url("https://fonts.cdnfonts.com/css/mona-sans");
+
+.premium-card-wrapper {
+    position: relative;
+    width: 320px;
+    height: 500px;
+    margin: 0 auto 50px auto;
+    font-family: "Mona Sans", sans-serif;
+    perspective: 1000px;
+}
+
+.premium-card {
+    position: relative;
+    /* Changed from absolute for grid */
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    background: linear-gradient(180deg, #292929aa 0%, #191919cc 50%);
+    backdrop-filter: blur(4px);
+    box-shadow: inset 0 2px 2px 0 #e7c4a088, inset 0 -2px 2px 0 #0003;
+    color: #ccc;
+    text-shadow: 1px 1px 3px #333a;
+    padding: 24px;
+    padding-right: 42px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    z-index: 2;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.premium-card h2 {
+    font-size: 1.1em !important;
+    margin: 8px 0 !important;
+    color: #fff !important;
+    font-family: "Mona Sans", sans-serif !important;
+    font-weight: 700 !important;
+}
+
+.premium-card p {
+    font-size: 0.9em !important;
+    font-weight: 800 !important;
+    color: #aaa !important;
+    margin: 0 0 12px 0 !important;
+}
+
+.premium-card .button {
+    width: fit-content;
+    border-radius: 100px;
+    padding: 8px 36px;
+    margin-top: 12px;
+    background: #fff2;
+    box-shadow: 0 0 0 1px #fff3, inset 120px 0 100px -100px #000c, 0 0 0 0 #fff1;
+    transition: box-shadow 0.4s ease-in-out;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #fff;
+    font-weight: 600;
+}
+
+.premium-card .button:hover {
+    box-shadow: 0 0 0 1px #fff3, inset 200px 0px 100px -100px #000a, -4px 0 8px 2px #fff2;
+}
+
+.premium-card img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100% !important;
+    height: 60% !important;
+    object-fit: cover !important;
+    user-select: none;
+    pointer-events: none;
+    border-radius: 16px 16px 0 0;
+    mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
+}
+
+/* Accents Background */
+.accents {
+    user-select: none;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.accents .acc-card {
+    width: 100%;
+    height: 100%;
+    background: #eee1;
+    opacity: 0.8;
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 16px;
+    box-shadow: inset 0 2px 2px 0 #e0c9b266, inset 0 -2px 2px 0 #0004;
+    backdrop-filter: blur(4px);
+    transition: all 0.1s linear;
+    transform-origin: 20% 80%;
+}
+
+.accents .acc-card:nth-child(1) {
+    animation: wobble 18s ease-in-out infinite;
+}
+
+.accents .acc-card:nth-child(2) {
+    animation: wobble 22s ease-in-out -6s infinite reverse;
+}
+
+.accents .acc-card:nth-child(3) {
+    animation: wobble 26s ease-in-out -18s infinite;
+}
+
+.accents .light {
+    --bgref: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg id='Layer_1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 487 487'%3E%3Ccircle cx='243' cy='243.5' r='233' style='fill:none; opacity:.1; stroke:%23aaa; stroke-linecap:round; stroke-miterlimit:10; stroke-width:18px;'/%3E%3Ccircle cx='243.5' cy='243.5' r='243' style='fill:none; stroke:%23111; stroke-linecap:round; stroke-miterlimit:10;'/%3E%3Ccircle cx='243' cy='243.5' r='222' style='fill:none; stroke:%23111; stroke-linecap:round; stroke-miterlimit:10;'/%3E%3Cpath d='m10,243.5C10,114.82,114.32,10.5,243,10.5' style='fill:none; stroke:%23ddd; stroke-linecap:round; stroke-miterlimit:10; stroke-width:18px;'/%3E%3C/svg%3E");
+    position: absolute;
+    left: -50px;
+    top: 200px;
+    width: 164px;
+    height: 164px;
+    z-index: -2;
+    background-image: var(--bgref);
+    animation: rotate360 22s linear infinite;
+    opacity: 0.5;
+}
+
+.accents .light::before,
+.accents .light::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-image: var(--bgref);
+    filter: blur(3px);
+    scale: 1.01;
+}
+
+.accents .light::after {
+    filter: blur(8px);
+}
+
+.accents .light.sm {
+    width: 100px;
+    height: 100px;
+    left: auto;
+    right: -30px;
+    top: 100px;
+    animation: rotate360 18s linear -10s infinite;
+}
+
+.accents .top-light {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -20px;
+    /* Adjusted to fit */
+    margin: auto;
+    width: 200px;
+    height: 6px;
+    border-radius: 10px;
+    background: #fffef9;
+    box-shadow: 0 0px 1px 1px #ffc78e, 0 1px 2px 1px #ff942977, 0 2px 6px 1px #e98b2d77, 0 4px 12px 0px #ff9e3d99, 0 12px 20px 12px #ff800044;
+    z-index: 3;
+}
+
+@keyframes rotate360 {
+    to {
+        rotate: 360deg;
+    }
+}
+
+@keyframes wobble {
+    0% {
+        transform: translateX(10px) translateY(20px) rotate(-3deg) scale(1);
+    }
+
+    20% {
+        transform: translateX(-44px) translateY(-8px) rotate(6deg) scale(1.02);
+    }
+
+    60% {
+        transform: translateX(32px) translateY(18px) rotate(-8deg) scale(1);
+    }
+
+    80% {
+        transform: translateX(-42px) translateY(-22px) rotate(12deg) scale(0.94);
+    }
+
+    100% {
+        transform: translateX(10px) translateY(20px) rotate(-3deg) scale(1);
+    }
+}
+
+/* Ensure Owl Carousel items overflow visible for accents */
+.owl-item {
+    overflow: visible !important;
+    z-index: 10;
+}
+
+.owl-stage-outer {
+    overflow: visible !important;
+}
+
+/* Price Badge Overwrite */
+.premium-price {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 5px 12px;
+    border-radius: 20px;
+    color: #fff;
+    font-weight: 700;
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
