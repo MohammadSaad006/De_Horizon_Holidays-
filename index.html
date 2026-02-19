@@ -8,15 +8,17 @@
 
     <!-- Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <!-- Libraries CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <!-- Swiper CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+
+    <!-- Lenis Smooth Scroll -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/css/style_premium.css">
@@ -26,31 +28,58 @@
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader-logo">DeHorizon<span>.</span></div>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Mouse Gradient Spotlight -->
+    <div class="mouse-gradient" id="mouseGradient"></div>
+
+    <!-- Animated Gradient Mesh Background -->
+    <div class="gradient-mesh" aria-hidden="true">
+        <div class="mesh-blob blob-1"></div>
+        <div class="mesh-blob blob-2"></div>
+        <div class="mesh-blob blob-3"></div>
+        <div class="mesh-blob blob-4"></div>
     </div>
 
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="preloader-content">
+            <div class="loader-logo">
+                <span class="logo-3d" data-text="DeHorizon">DeHorizon</span><span class="logo-dot">.</span>
+            </div>
+            <div class="preloader-tagline">Crafting Extraordinary Journeys</div>
+            <div class="preloader-bar">
+                <div class="preloader-bar-fill" id="preloaderBar"></div>
+            </div>
+        </div>
+        <!-- Preloader particles canvas -->
+        <canvas id="preloaderCanvas"></canvas>
+    </div>
+
+    <!-- Golden Dust Particles -->
+    <canvas id="goldenDustCanvas"></canvas>
+
     <!-- Custom Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-follower"></div>
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+    <div class="cursor-trail" id="cursorTrail"></div>
 
     <!-- Header -->
     <header>
         <div class="container nav-container">
             <a href="#" class="logo">DeHorizon<span>.</span></a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#destinations">Holidays</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#hajj">Hajj & Umrah</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home" data-magnetic>Home</a></li>
+                <li><a href="#destinations" data-magnetic>Holidays</a></li>
+                <li><a href="#services" data-magnetic>Services</a></li>
+                <li><a href="#hajj" data-magnetic>Hajj & Umrah</a></li>
+                <li><a href="#about" data-magnetic>About</a></li>
+                <li><a href="#contact" data-magnetic>Contact</a></li>
             </ul>
             <div class="nav-icon">
                 <i class="fas fa-search"></i>
             </div>
-            <!-- Hamburger Menu for Mobile -->
             <div class="hamburger">
                 <div class="line"></div>
                 <div class="line"></div>
@@ -59,118 +88,275 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- ========================= -->
+    <!-- HERO SECTION — 3D DEPTH -->
+    <!-- ========================= -->
     <section class="hero" id="home">
-        <!-- Using a high-quality travel video placeholder -->
-        <video autoplay muted loop class="hero-video">
+        <video autoplay muted loop playsinline class="hero-video">
             <source src="https://dehorizonholidays.com/uploads/sliders/2024/08/17/166c05450c3886.mp4" type="video/mp4">
         </video>
 
-        <div class="hero-content">
-            <span class="hero-subtitle">Premium Travel Experience</span>
-            <h1 class="hero-title">Discover the<br><span>Extraordinary</span></h1>
+        <!-- 3D Parallax Depth Layers -->
+        <div class="hero-depth-layer layer-1" data-depth="0.2">
+            <div class="depth-circle"></div>
+        </div>
+        <div class="hero-depth-layer layer-2" data-depth="0.5">
+            <div class="depth-ring"></div>
+        </div>
+        <div class="hero-depth-layer layer-3" data-depth="0.8">
+            <div class="depth-diamond"></div>
+        </div>
 
-            <div class="search-container">
-                <input type="text" class="search-input" placeholder="Where is your next dream destination?">
-                <button class="search-btn"><i class="fas fa-arrow-right"></i></button>
+        <!-- Floating Decorative Elements -->
+        <div class="hero-float float-1">✈️</div>
+        <div class="hero-float float-2">🌍</div>
+        <div class="hero-float float-3">⭐</div>
+        <div class="hero-float float-4">🕌</div>
+        <div class="hero-float float-5">🏔️</div>
+
+        <div class="hero-content" data-perspective>
+            <span class="hero-subtitle" id="rotatingText">Premium Travel Experience</span>
+            <h1 class="hero-title-3d" data-scramble>
+                <span class="title-line">Discover the</span>
+                <span class="title-line title-accent">Extraordinary</span>
+            </h1>
+            <p class="hero-description">Luxury holidays, sacred pilgrimages & unforgettable adventures — crafted for the
+                discerning traveler.</p>
+
+            <div class="hero-cta-group">
+                <a href="#destinations" class="btn-primary btn-glow" data-magnetic>
+                    <span>Explore Destinations</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#about" class="btn-outline" data-magnetic>
+                    <span>Our Story</span>
+                </a>
+            </div>
+
+            <div class="hero-stats-row">
+                <div class="hero-stat">
+                    <strong>5000+</strong>
+                    <span>Happy Travelers</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <strong>50+</strong>
+                    <span>Destinations</span>
+                </div>
+                <div class="hero-stat-divider"></div>
+                <div class="hero-stat">
+                    <strong>10+</strong>
+                    <span>Years Excellence</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span>Scroll to Explore</span>
+        </div>
+    </section>
+
+    <!-- Wave Divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path fill="var(--primary-bg)" d="M0,64 C240,120 480,0 720,64 C960,128 1200,0 1440,64 L1440,120 L0,120 Z">
+            </path>
+        </svg>
+    </div>
+
+    <!-- Infinite Marquee -->
+    <section class="marquee-section">
+        <div class="marquee-track" id="marqueeTrack">
+            <div class="marquee-content">
+                <span>Paris</span><span class="marquee-dot">◆</span>
+                <span>Dubai</span><span class="marquee-dot">◆</span>
+                <span>Bali</span><span class="marquee-dot">◆</span>
+                <span>Mecca</span><span class="marquee-dot">◆</span>
+                <span>Switzerland</span><span class="marquee-dot">◆</span>
+                <span>Maldives</span><span class="marquee-dot">◆</span>
+                <span>Tokyo</span><span class="marquee-dot">◆</span>
+                <span>London</span><span class="marquee-dot">◆</span>
+                <span>Istanbul</span><span class="marquee-dot">◆</span>
+                <span>Santorini</span><span class="marquee-dot">◆</span>
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                <span>Paris</span><span class="marquee-dot">◆</span>
+                <span>Dubai</span><span class="marquee-dot">◆</span>
+                <span>Bali</span><span class="marquee-dot">◆</span>
+                <span>Mecca</span><span class="marquee-dot">◆</span>
+                <span>Switzerland</span><span class="marquee-dot">◆</span>
+                <span>Maldives</span><span class="marquee-dot">◆</span>
+                <span>Tokyo</span><span class="marquee-dot">◆</span>
+                <span>London</span><span class="marquee-dot">◆</span>
+                <span>Istanbul</span><span class="marquee-dot">◆</span>
+                <span>Santorini</span><span class="marquee-dot">◆</span>
             </div>
         </div>
     </section>
 
-    <!-- Destinations Section -->
+    <!-- Reverse Marquee -->
+    <section class="marquee-section marquee-reverse">
+        <div class="marquee-track marquee-track-reverse">
+            <div class="marquee-content">
+                <span>Hajj</span><span class="marquee-dot">◆</span>
+                <span>Umrah</span><span class="marquee-dot">◆</span>
+                <span>Kashmir</span><span class="marquee-dot">◆</span>
+                <span>Thailand</span><span class="marquee-dot">◆</span>
+                <span>Singapore</span><span class="marquee-dot">◆</span>
+                <span>Malaysia</span><span class="marquee-dot">◆</span>
+                <span>Egypt</span><span class="marquee-dot">◆</span>
+                <span>Morocco</span><span class="marquee-dot">◆</span>
+                <span>Greece</span><span class="marquee-dot">◆</span>
+                <span>Italy</span><span class="marquee-dot">◆</span>
+            </div>
+            <div class="marquee-content" aria-hidden="true">
+                <span>Hajj</span><span class="marquee-dot">◆</span>
+                <span>Umrah</span><span class="marquee-dot">◆</span>
+                <span>Kashmir</span><span class="marquee-dot">◆</span>
+                <span>Thailand</span><span class="marquee-dot">◆</span>
+                <span>Singapore</span><span class="marquee-dot">◆</span>
+                <span>Malaysia</span><span class="marquee-dot">◆</span>
+                <span>Egypt</span><span class="marquee-dot">◆</span>
+                <span>Morocco</span><span class="marquee-dot">◆</span>
+                <span>Greece</span><span class="marquee-dot">◆</span>
+                <span>Italy</span><span class="marquee-dot">◆</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========================= -->
+    <!-- DESTINATIONS — 3D CARDS -->
+    <!-- ========================= -->
     <section class="destinations" id="destinations">
         <div class="bg-blur"></div>
         <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Popular Destinations</h2>
+            <div class="section-title">
+                <span class="section-tag">Featured</span>
+                <h2 data-scramble>Popular Destinations</h2>
                 <p>Curated luxury experiences in the world's most breathtaking locations.</p>
             </div>
 
-            <div class="swiper-container" data-aos="fade-up" data-aos-delay="200">
+            <div class="swiper-container">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"
+                    <div class="swiper-slide card-3d"
                         style="background-image: url('https://images.unsplash.com/photo-1522093007474-d86e9bf7ba6f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <div class="card-3d-shine"></div>
                         <div class="slide-content">
                             <span class="slide-subtitle">Europe</span>
                             <h3 class="slide-title">Paris, France</h3>
-                            <a href="#" class="slide-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                            <p class="slide-desc">City of lights, love & luxury</p>
+                            <a href="#" class="slide-btn" data-magnetic>Explore <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="swiper-slide"
+                    <div class="swiper-slide card-3d"
                         style="background-image: url('https://images.unsplash.com/photo-1512453979798-5ea904ac6605?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <div class="card-3d-shine"></div>
                         <div class="slide-content">
                             <span class="slide-subtitle">Middle East</span>
                             <h3 class="slide-title">Dubai, UAE</h3>
-                            <a href="#" class="slide-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                            <p class="slide-desc">Where dreams touch the sky</p>
+                            <a href="#" class="slide-btn" data-magnetic>Explore <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="swiper-slide"
+                    <div class="swiper-slide card-3d"
                         style="background-image: url('https://images.unsplash.com/photo-1537996194471-e657df975ab4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <div class="card-3d-shine"></div>
                         <div class="slide-content">
                             <span class="slide-subtitle">Asia</span>
                             <h3 class="slide-title">Bali, Indonesia</h3>
-                            <a href="#" class="slide-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                            <p class="slide-desc">Tropical paradise awaits</p>
+                            <a href="#" class="slide-btn" data-magnetic>Explore <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="swiper-slide"
+                    <div class="swiper-slide card-3d"
                         style="background-image: url('https://images.unsplash.com/photo-1548013146-72479768bada?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <div class="card-3d-shine"></div>
                         <div class="slide-content">
                             <span class="slide-subtitle">Asia</span>
                             <h3 class="slide-title">Taj Mahal, India</h3>
-                            <a href="#" class="slide-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                            <p class="slide-desc">A wonder of the world</p>
+                            <a href="#" class="slide-btn" data-magnetic>Explore <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
-                    <div class="swiper-slide"
+                    <div class="swiper-slide card-3d"
                         style="background-image: url('https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80');">
+                        <div class="card-3d-shine"></div>
                         <div class="slide-content">
                             <span class="slide-subtitle">Europe</span>
-                            <h3 class="slide-title">Paris, France</h3>
-                            <a href="#" class="slide-btn">Explore <i class="fas fa-arrow-right"></i></a>
+                            <h3 class="slide-title">Eiffel Tower</h3>
+                            <p class="slide-desc">Iconic romance in iron</p>
+                            <a href="#" class="slide-btn" data-magnetic>Explore <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
-                <!-- Add Pagination -->
                 <div class="swiper-pagination"></div>
             </div>
         </div>
     </section>
 
-    <!-- Detailed Services Section -->
-    <section class="services" id="services" style="padding: 100px 0; background: var(--primary-bg);">
+    <!-- Wave Divider -->
+    <div class="wave-divider wave-flip">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path fill="var(--primary-bg)" d="M0,64 C240,120 480,0 720,64 C960,128 1200,0 1440,64 L1440,120 L0,120 Z">
+            </path>
+        </svg>
+    </div>
+
+    <!-- ========================= -->
+    <!-- SERVICES — 3D PERSPECTIVE -->
+    <!-- ========================= -->
+    <section class="services section-3d" id="services" style="padding: 120px 0; background: var(--secondary-bg);">
         <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Our Premium Services</h2>
+            <div class="section-title">
+                <span class="section-tag">What We Do</span>
+                <h2 data-scramble>Our Premium Services</h2>
                 <p>Beyond just holidays, we provide a complete travel ecosystem.</p>
             </div>
 
             <div class="features-grid">
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="0">
+                <div class="feature-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
+                    <div class="card-number">01</div>
                     <i class="fas fa-plane feature-icon"></i>
                     <h3 class="feature-title">Air Tickets</h3>
                     <p class="feature-desc">Best deals on domestic and international flights with premium carriers.</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="feature-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
+                    <div class="card-number">02</div>
                     <i class="fas fa-passport feature-icon"></i>
                     <h3 class="feature-title">Visa Assistance</h3>
                     <p class="feature-desc">Hassle-free visa processing for all major global destinations.</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="feature-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
+                    <div class="card-number">03</div>
                     <i class="fas fa-ship feature-icon"></i>
                     <h3 class="feature-title">Luxury Cruises</h3>
                     <p class="feature-desc">Set sail on the world's finest liners for an unforgettable journey at sea.
                     </p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="feature-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
+                    <div class="card-number">04</div>
                     <i class="fas fa-mosque feature-icon"></i>
                     <h3 class="feature-title">Hajj & Umrah</h3>
                     <p class="feature-desc">Spiritual journeys crafted with care, comfort, and guidance.</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="feature-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
+                    <div class="card-number">05</div>
                     <i class="fas fa-train feature-icon"></i>
                     <h3 class="feature-title">Eurail</h3>
                     <p class="feature-desc">Explore Europe's scenic beauty with convenient rail passes.</p>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="feature-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
+                    <div class="card-number">06</div>
                     <i class="fas fa-user-shield feature-icon"></i>
                     <h3 class="feature-title">Travel Insurance</h3>
                     <p class="feature-desc">Comprehensive coverage for a safe and worry-free vacation.</p>
@@ -179,60 +365,75 @@
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials" style="padding: 100px 0; background: var(--secondary-bg); position: relative;">
+    <!-- Wave Divider -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path fill="var(--secondary-bg)" d="M0,64 C240,120 480,0 720,64 C960,128 1200,0 1440,64 L1440,120 L0,120 Z">
+            </path>
+        </svg>
+    </div>
+
+    <!-- ========================= -->
+    <!-- TESTIMONIALS — 3D STACK -->
+    <!-- ========================= -->
+    <section class="testimonials section-3d"
+        style="padding: 120px 0; background: var(--primary-bg); position: relative;">
         <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Traveler Stories</h2>
+            <div class="section-title">
+                <span class="section-tag">Testimonials</span>
+                <h2 data-scramble>Traveler Stories</h2>
                 <p>Hear from those who have experienced the world with DeHorizon.</p>
             </div>
 
-            <div class="features-grid">
-                <div class="feature-card" data-aos="fade-up" style="text-align: left;">
+            <div class="testimonial-stack" id="testimonialStack">
+                <div class="testimonial-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
                     <div style="color: var(--accent-gold); font-size: 1.5rem; margin-bottom: 20px;">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                             class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p style="font-style: italic; margin-bottom: 20px;">"The attention to detail on our Dubai trip was
-                        impeccable. From the private transfers to the desert safari, everything was top-notch."</p>
-                    <div style="display: flex; align-items: center; gap: 15px;">
+                    <p class="testimonial-text">"The attention to detail on our Dubai trip was impeccable. From the
+                        private transfers to the desert safari, everything was top-notch."</p>
+                    <div class="testimonial-author">
                         <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-                            style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                            alt="Sarah">
                         <div>
-                            <h4 style="margin: 0; font-size: 1rem;">Sarah Jenkins</h4>
-                            <span style="color: var(--text-muted); font-size: 0.9rem;">Dubai, 2023</span>
+                            <h4>Sarah Jenkins</h4>
+                            <span>Dubai, 2023</span>
                         </div>
                     </div>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="100" style="text-align: left;">
+                <div class="testimonial-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
                     <div style="color: var(--accent-gold); font-size: 1.5rem; margin-bottom: 20px;">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                             class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p style="font-style: italic; margin-bottom: 20px;">"Hajj with DeHorizon was a spiritually uplifting
-                        experience. The logistics were handled perfectly, allowing us to focus on worship."</p>
-                    <div style="display: flex; align-items: center; gap: 15px;">
+                    <p class="testimonial-text">"Hajj with DeHorizon was a spiritually uplifting experience. The
+                        logistics were handled perfectly, allowing us to focus on worship."</p>
+                    <div class="testimonial-author">
                         <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-                            style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                            alt="Mohammed">
                         <div>
-                            <h4 style="margin: 0; font-size: 1rem;">Mohammed Ali</h4>
-                            <span style="color: var(--text-muted); font-size: 0.9rem;">Mecca, 2024</span>
+                            <h4>Mohammed Ali</h4>
+                            <span>Mecca, 2024</span>
                         </div>
                     </div>
                 </div>
-                <div class="feature-card" data-aos="fade-up" data-aos-delay="200" style="text-align: left;">
+                <div class="testimonial-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
                     <div style="color: var(--accent-gold); font-size: 1.5rem; margin-bottom: 20px;">
                         <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
                             class="fas fa-star"></i><i class="fas fa-star"></i>
                     </div>
-                    <p style="font-style: italic; margin-bottom: 20px;">"Our tailored European tour was a dream come
-                        true. Highly recommend the Switzerland package!"</p>
-                    <div style="display: flex; align-items: center; gap: 15px;">
+                    <p class="testimonial-text">"Our tailored European tour was a dream come true. The Switzerland
+                        package exceeded every expectation!"</p>
+                    <div class="testimonial-author">
                         <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80"
-                            style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover;">
+                            alt="Emma">
                         <div>
-                            <h4 style="margin: 0; font-size: 1rem;">Emma Wilson</h4>
-                            <span style="color: var(--text-muted); font-size: 0.9rem;">Swiss Alps, 2023</span>
+                            <h4>Emma Wilson</h4>
+                            <span>Swiss Alps, 2023</span>
                         </div>
                     </div>
                 </div>
@@ -240,21 +441,40 @@
         </div>
     </section>
 
-    <!-- About Section Teaser -->
-    <section id="about" class="about-section">
+    <!-- ========================= -->
+    <!-- ABOUT — SPLIT REVEAL -->
+    <!-- ========================= -->
+    <section id="about" class="about-section section-3d">
         <div class="container">
             <div class="about-grid">
-                <div class="about-text" data-aos="fade-right">
-                    <span class="subtitle">Our Story</span>
-                    <h2 class="section-title-left">Redefining Luxury Travel</h2>
+                <div class="about-text">
+                    <span class="section-tag">Our Story</span>
+                    <h2 class="section-title-left" data-scramble>Redefining Luxury Travel</h2>
                     <p class="about-desc">DeHorizon Holidays is not just a travel agency; we are your gateway to the
                         extraordinary. We craft journeys that blend spiritual fulfillment with worldly luxury.</p>
-                    <p class="about-desc">From the sacred paths of **Hajj & Umrah** to the sun-kissed villas of
-                        **Europe**, every detail is meticulously curated for the discerning traveler.</p>
-                    <a href="#" class="btn-primary">Read Our Story</a>
+                    <p class="about-desc">From the sacred paths of Hajj & Umrah to the sun-kissed villas of Europe,
+                        every detail is meticulously curated for the discerning traveler.</p>
+
+                    <div class="about-features">
+                        <div class="about-feature-item">
+                            <div class="about-feature-icon"><i class="fas fa-check-circle"></i></div>
+                            <span>Personalized Itineraries</span>
+                        </div>
+                        <div class="about-feature-item">
+                            <div class="about-feature-icon"><i class="fas fa-check-circle"></i></div>
+                            <span>24/7 Concierge Support</span>
+                        </div>
+                        <div class="about-feature-item">
+                            <div class="about-feature-icon"><i class="fas fa-check-circle"></i></div>
+                            <span>Best Price Guarantee</span>
+                        </div>
+                    </div>
+
+                    <a href="#" class="btn-primary btn-glow" data-magnetic><span>Read Our Story</span> <i
+                            class="fas fa-arrow-right"></i></a>
                 </div>
-                <div class="about-image-wrapper" data-aos="fade-left">
-                    <div class="about-img-container">
+                <div class="about-image-wrapper">
+                    <div class="about-img-container image-reveal">
                         <img src="https://images.unsplash.com/photo-1500835556837-99ac94a94552?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
                             alt="Luxury Travel">
                     </div>
@@ -267,104 +487,123 @@
         </div>
     </section>
 
-    <!-- Why Choose Us / Stats Section -->
-    <section class="stats" style="padding: 80px 0; background: var(--secondary-bg);">
+    <!-- Wave Divider -->
+    <div class="wave-divider wave-flip">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path fill="var(--primary-bg)" d="M0,64 C240,120 480,0 720,64 C960,128 1200,0 1440,64 L1440,120 L0,120 Z">
+            </path>
+        </svg>
+    </div>
+
+    <!-- ========================= -->
+    <!-- STATS — 3D COUNTERS -->
+    <!-- ========================= -->
+    <section class="stats section-3d" style="padding: 100px 0; background: var(--secondary-bg);">
         <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Why Choose Us</h2>
+            <div class="section-title">
+                <span class="section-tag">Numbers</span>
+                <h2 data-scramble>Why Choose Us</h2>
             </div>
-            <div class="features-grid" style="grid-template-columns: repeat(4, 1fr); text-align: center;">
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="0">
-                    <h3 class="counter" data-target="5000"
-                        style="font-size: 3rem; color: var(--accent-blue); margin-bottom: 10px;">0</h3>
+            <div class="stats-grid">
+                <div class="stat-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
+                    <div class="stat-icon"><i class="fas fa-smile-beam"></i></div>
+                    <h3 class="counter" data-target="5000">0</h3>
                     <p>Happy Travelers</p>
                 </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="100">
-                    <h3 class="counter" data-target="50"
-                        style="font-size: 3rem; color: var(--accent-purple); margin-bottom: 10px;">0</h3>
+                <div class="stat-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
+                    <div class="stat-icon"><i class="fas fa-globe-americas"></i></div>
+                    <h3 class="counter" data-target="50">0</h3>
                     <p>Destinations</p>
                 </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="200">
-                    <h3 class="counter" data-target="150"
-                        style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 10px;">0</h3>
+                <div class="stat-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
+                    <div class="stat-icon"><i class="fas fa-hotel"></i></div>
+                    <h3 class="counter" data-target="150">0</h3>
                     <p>Luxury Hotels</p>
                 </div>
-                <div class="stat-item" data-aos="zoom-in" data-aos-delay="300">
-                    <h3 class="counter" data-target="24" style="font-size: 3rem; color: #fff; margin-bottom: 10px;">0
-                    </h3>
+                <div class="stat-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
+                    <div class="stat-icon"><i class="fas fa-headset"></i></div>
+                    <h3 class="counter" data-target="24">0</h3>
                     <p>24/7 Support</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Blog Section -->
-    <section class="blog" style="padding: 100px 0; background: var(--primary-bg);">
+    <!-- ========================= -->
+    <!-- BLOG — 3D HOVER CARDS -->
+    <!-- ========================= -->
+    <section class="blog section-3d" style="padding: 120px 0; background: var(--primary-bg);">
         <div class="container">
-            <div class="section-title" data-aos="fade-up">
-                <h2>Latest from Our Blog</h2>
+            <div class="section-title">
+                <span class="section-tag">Blog</span>
+                <h2 data-scramble>Latest from Our Blog</h2>
                 <p>Travel tips, guides, and inspiration for your next journey.</p>
             </div>
             <div class="features-grid">
-                <div class="blog-card"
-                    style="background: var(--glass-bg); border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border);"
-                    data-aos="fade-up">
-                    <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                        style="width: 100%; height: 200px; object-fit: cover;">
-                    <div style="padding: 25px;">
-                        <span style="color: var(--accent-gold); font-size: 0.9rem; text-transform: uppercase;">Travel
-                            Guide</span>
-                        <h3 style="margin: 10px 0; font-size: 1.3rem;">Top 10 Hidden Gems in Europe</h3>
-                        <p style="color: var(--text-muted); margin-bottom: 20px;">Discover the places that aren't on
-                            every tourist's map but should be on yours.</p>
-                        <a href="#" style="color: var(--accent-blue); font-weight: 600;">Read More <i
-                                class="fas fa-arrow-right"></i></a>
+                <div class="blog-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
+                    <div class="blog-img-wrapper image-reveal">
+                        <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Europe">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Travel Guide</span>
+                        <h3>Top 10 Hidden Gems in Europe</h3>
+                        <p>Discover the places that aren't on every tourist's map but should be on yours.</p>
+                        <a href="#" class="read-more" data-magnetic>Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="blog-card"
-                    style="background: var(--glass-bg); border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border);"
-                    data-aos="fade-up" data-aos-delay="100">
-                    <img src="https://images.unsplash.com/photo-1590418606746-018840f9cd0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                        style="width: 100%; height: 200px; object-fit: cover;">
-                    <div style="padding: 25px;">
-                        <span
-                            style="color: var(--accent-gold); font-size: 0.9rem; text-transform: uppercase;">Luxury</span>
-                        <h3 style="margin: 10px 0; font-size: 1.3rem;">Experience Dubai Like a Sheikh</h3>
-                        <p style="color: var(--text-muted); margin-bottom: 20px;">From gold cappuccinos to private yacht
-                            parties, here is how to minimalize compromise.</p>
-                        <a href="#" style="color: var(--accent-blue); font-weight: 600;">Read More <i
-                                class="fas fa-arrow-right"></i></a>
+                <div class="blog-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
+                    <div class="blog-img-wrapper image-reveal">
+                        <img src="https://images.unsplash.com/photo-1590418606746-018840f9cd0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Dubai">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Luxury</span>
+                        <h3>Experience Dubai Like a Sheikh</h3>
+                        <p>From gold cappuccinos to private yacht parties, the ultimate guide.</p>
+                        <a href="#" class="read-more" data-magnetic>Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="blog-card"
-                    style="background: var(--glass-bg); border-radius: 20px; overflow: hidden; border: 1px solid var(--glass-border);"
-                    data-aos="fade-up" data-aos-delay="200">
-                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
-                        style="width: 100%; height: 200px; object-fit: cover;">
-                    <div style="padding: 25px;">
-                        <span
-                            style="color: var(--accent-gold); font-size: 0.9rem; text-transform: uppercase;">Tips</span>
-                        <h3 style="margin: 10px 0; font-size: 1.3rem;">Packing for a Maldives Getaway</h3>
-                        <p style="color: var(--text-muted); margin-bottom: 20px;">What to bring (and what to leave
-                            behind) for the ultimate island vacation.</p>
-                        <a href="#" style="color: var(--accent-blue); font-weight: 600;">Read More <i
-                                class="fas fa-arrow-right"></i></a>
+                <div class="blog-card glass-card card-3d" data-tilt>
+                    <div class="card-3d-shine"></div>
+                    <div class="blog-img-wrapper image-reveal">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+                            alt="Maldives">
+                    </div>
+                    <div class="blog-content">
+                        <span class="blog-tag">Tips</span>
+                        <h3>Packing for a Maldives Getaway</h3>
+                        <p>What to bring and what to leave behind for the ultimate island vacation.</p>
+                        <a href="#" class="read-more" data-magnetic>Read More <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CTA Section -->
-    <section
-        style="padding: 100px 0; text-align: center; position: relative; background: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover fixed;">
-        <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: rgba(15, 23, 42, 0.8);">
+    <!-- ========================= -->
+    <!-- CTA — IMMERSIVE -->
+    <!-- ========================= -->
+    <section class="cta-section section-3d">
+        <div class="cta-bg"
+            style="background: url('https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80') center/cover fixed;">
         </div>
-        <div class="container" style="position: relative; z-index: 2;">
-            <h2 style="font-size: 3rem; margin-bottom: 20px;" data-aos="zoom-in">Ready to Start Your Journey?</h2>
-            <p style="color: #cbd5e1; max-width: 600px; margin: 0 auto 40px;" data-aos="fade-up" data-aos-delay="100">
-                Book your next adventure with DeHorizon Holidays and experience the world like never before.</p>
-            <button class="btn-primary" data-aos="fade-up" data-aos-delay="200">Plan My Trip</button>
+        <div class="cta-overlay"></div>
+        <div class="container cta-content">
+            <h2 data-scramble>Ready to Start Your Journey?</h2>
+            <p>Book your next adventure with DeHorizon Holidays and experience the world like never before.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary btn-glow btn-large" data-magnetic><span>Plan My Trip</span> <i
+                        class="fas fa-arrow-right"></i></a>
+                <a href="https://wa.me/919820009074" class="btn-outline btn-large" data-magnetic><i
+                        class="fab fa-whatsapp"></i> <span>WhatsApp Us</span></a>
+            </div>
         </div>
     </section>
 
@@ -378,10 +617,10 @@
                     <p>Crafting unforgettable travel experiences for the discerning explorer. Your journey begins with
                         us.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link" data-magnetic><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link" data-magnetic><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link" data-magnetic><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link" data-magnetic><i class="fab fa-linkedin-in"></i></a>
                     </div>
                 </div>
                 <div class="footer-col">
@@ -404,75 +643,39 @@
                 </div>
                 <div class="footer-col">
                     <h4>Newsletter</h4>
-                    <p style="color: var(--text-muted); margin-bottom: 15px;">Subscribe for latest travel trends and
+                    <p style="color: rgba(255,255,255,0.5); margin-bottom: 15px;">Subscribe for latest travel trends and
                         offers.</p>
-                    <form style="display: flex; gap: 10px;">
-                        <input type="email" placeholder="Your Email"
-                            style="padding: 10px; border-radius: 5px; border: none; outline: none; width: 100%;">
-                        <button type="submit"
-                            style="padding: 10px 15px; border-radius: 5px; border: none; background: var(--accent-blue); color: white; cursor: pointer;"><i
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your Email">
+                        <button type="submit" class="btn-primary" data-magnetic><i
                                 class="fas fa-paper-plane"></i></button>
                     </form>
                 </div>
             </div>
             <div class="copyright">
-                <p>&copy; 2024 DeHorizon Holidays. All rights reserved.</p>
+                <p>&copy; 2024 DeHorizon Holidays. All rights reserved. Crafted with <i class="fas fa-heart"
+                        style="color: var(--accent-blue);"></i></p>
             </div>
         </div>
     </footer>
 
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" data-magnetic>
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
     <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/919820009074" target="_blank" class="float-btn">
+    <a href="https://wa.me/919820009074" target="_blank" class="float-btn" data-magnetic>
         <i class="fab fa-whatsapp"></i>
     </a>
-    <style>
-        .float-btn {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 60px;
-            height: 60px;
-            background-color: #25d366;
-            color: #fff;
-            border-radius: 50%;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 2px 2px 3px #999;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-        }
-
-        .float-btn:hover {
-            transform: scale(1.1);
-            background-color: #128c7e;
-            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
-        }
-    </style>
 
     <!-- Scripts -->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="assets/js/main.js"></script>
-    <script>
-        // Initialize VanillaTilt for Feature Cards
-        VanillaTilt.init(document.querySelectorAll(".feature-card"), {
-            max: 15,
-            speed: 400,
-            glare: true,
-            "max-glare": 0.2,
-        });
-
-        // Initialize VanillaTilt for Blog Cards
-        VanillaTilt.init(document.querySelectorAll(".blog-card"), {
-            max: 10,
-            speed: 400
-        });
-    </script>
 </body>
 
 </html>
